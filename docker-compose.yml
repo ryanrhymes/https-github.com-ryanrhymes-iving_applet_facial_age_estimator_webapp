@@ -1,13 +1,15 @@
 version: '3.7'
 
 services:
+
   api:
     image: codait/max-facial-age-estimator:latest
-    ports:
-      - 5010:5000
     stdin_open: true
     tty: true
-  web:
-    image: codait/max-facial-age-estimator-mini-web-app
     ports:
+      - 5010:5000
       - 8010:8000
+
+  web:
+    image: codait/max-facial-age-estimator-mini-web-app:latest
+    network_mode: service:api
